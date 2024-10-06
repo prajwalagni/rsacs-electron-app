@@ -7,12 +7,18 @@ document.querySelector('.search-input').addEventListener('input', function(e) {
 
 
 /* ================== LINK ACTIVE ================== */
-const linkColor = document.querySelectorAll('.nav__link')
+const linkColor = document.querySelectorAll('.nav__link');
+// const linkColor = document.querySelectorAll('.nav__link')
 
 function colorLink() {
     linkColor.forEach(l => l.classList.remove('active-link'))
     this.classList.add('active-link')
 }
+
+// function dynamicContent() {
+//     linkColor.forEach(l => l.classList.remove('active-link'))
+//     this.classList.add('active-link')
+// }
 
 linkColor.forEach(l => l.addEventListener('click', colorLink))
 
@@ -39,7 +45,8 @@ showMenu('nav-toggle', 'nav')
 /* ================== PO FORM ================== */
 const po_mainPage = document.getElementsByClassName('po-menu-container')[0];
 const create_po_form_btn = document.getElementsByClassName('po-container')[0];
-const view_po_btn = document.getElementsByClassName('po-container')[1];
+const view_po_page = document.getElementsByClassName('po-container')[1];
+const settings_mainPage = document.getElementsByClassName('po-menu-container')[1];
 
 let locations = [
     {
@@ -69,17 +76,42 @@ let locations = [
         redirect: () => {
             window.history.pushState(null, null, "view-po");
             po_mainPage.style.display = "none";
-            create_po_form_btn.style.display = "none";
-            view_po_btn.style.display = "block";
+            view_po_page.style.display = "block";
+        }
+    },
+    {
+        href: "settings",
+        name: "Settings",
+        description: "Settings desc",
+        redirect: () => {
+            window.history.pushState(null, null, "settings");
+            po_mainPage.style.display = "none";
+            settings_mainPage.style.display = "flex";
+            document.querySelector("main > h1").style.display = "none";
+        }
+    },
+    {
+        href: "main-page",
+        name: "Main Page",
+        description: "Main page desc",
+        redirect: () => {
+            window.history.pushState(null, null, "index.html");
+            po_mainPage.style.display = "flex";
+            settings_mainPage.style.display = "none";
+            document.querySelector("main > h1").style.display = "block";
         }
     }
 ]
 
 const date = new Date();
 document.getElementById('date').value = date.toISOString().substr(0, 10);
+document.getElementById('date2').value = date.toISOString().substr(0, 10);
 const create_po_btn = document.getElementsByClassName('po-menu-card')[0];
+const view_po_btn = document.getElementsByClassName('po-menu-card')[1];
 create_po_btn.addEventListener('click', locations[0].redirect);
-view_po_btn.addEventListener('click', console.log("test"));
+view_po_btn.addEventListener('click', locations[2].redirect);
+linkColor[0].addEventListener('click', locations[4].redirect);
+linkColor[4].addEventListener('click', locations[3].redirect);
 
 const addRowBtn = document.getElementById('po-add-row');
 const orderItems = document.getElementById('po-order-items');
@@ -160,9 +192,16 @@ document.getElementsByClassName('po-cancel-btn')[0].addEventListener('click', fu
     }
 });
 
+window.addEventListener('DOMContentLoaded', async () => {
+    const versionElement = document.querySelector(".sett-bottom > span"); // Use querySelector for single element
+    const version = await window.electronAPI.getAppVersion(); // Await the version response
+    versionElement.textContent = "App Version: " + version;
+});
+
 window.addEventListener('popstate', function(event) {
     event.preventDefault();
     po_mainPage.style.display = "flex";
     create_po_form_btn.style.display = "none";
-    view_po_btn.style.display = "none";
+    view_po_page.style.display = "none";
+    settings_mainPage.style.display = "none";
 });

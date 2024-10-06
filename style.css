@@ -631,3 +631,93 @@ a {
         font-size: 0.9em;
     }
 }
+
+/* ================== SETTINGS PAGE ================== */
+.po-menu-container:nth-child(4) {
+    display: none;
+}
+
+.settings-page {
+    background-color: white;
+    padding: 10px 50px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgb(200, 200, 200);
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sett-h1, .sett-h3 {
+    font-family: "Roboto Slab";
+    font-weight: 600;
+}
+
+.sett-span {
+    font-weight: 500;
+    font-family: "Poppins";
+}
+
+.toggle-container {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+}
+
+.toggle {
+    width: 60px;
+    height: 35px;
+    border-radius: 40px;
+    background-color: #EBEBFB;
+    display: inline-block;
+}
+
+.toggle-c {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: white;
+    display: inline-block;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    transition: 300ms all;
+    border: 1px solid #8C8CA4;
+}
+
+.sett-input[type="checkbox"] {
+    display: none;
+}
+
+.sett-input[type="checkbox"]:checked + .toggle-container .toggle-c {
+    left: 30px;
+    background-color: #30305C;
+    border-color: #30305C;
+}
+
+.sett-input[type="radio"] {
+    border: 0px;
+    width: 10%;
+    height: 20px;
+    accent-color: black;
+}
+
+.togg-label {
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+}
+
+.sett-flex {
+    display: flex;
+    gap: 5px;
+}
+
+.sett-bottom:hover {
+    text-decoration: none;
+}
+
+.sett-label, .sett-input[type="radio"] {
+    cursor: pointer;
+}

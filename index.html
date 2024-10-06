@@ -30,27 +30,27 @@
             </a>
 
             <div class="nav__list">
-                <a href="#" class="nav__link active-link">
+                <a class="nav__link active-link">
                     <i class='bx bx-grid-alt'></i>
                     <span class="nav__name">Dashboard</span>
                 </a>
                 
-                <a href="#" class="nav__link">
+                <a class="nav__link">
                     <i class='bx bx-file'></i>
                     <span class="nav__name">Appointments</span>
                 </a>
                 
-                <a href="#" class="nav__link">
+                <a class="nav__link">
                     <i class='bx bx-envelope'></i>
                     <span class="nav__name">Messages</span>
                 </a>
 
-                <a href="#" class="nav__link">
+                <a class="nav__link">
                     <i class='bx bx-bar-chart-square'></i>
                     <span class="nav__name">Statistic</span>
                 </a>
 
-                <a href="#" class="nav__link">
+                <a class="nav__link">
                     <i class='bx bx-cog'></i>
                     <span class="nav__name">Settings</span>
                 </a>
@@ -220,8 +220,8 @@
                 <h2 class="po-h2">Purchase Order Form</h2>
                 
                 <!-- Dropdown for Seller Contact -->
-                <label class="po-label" for="po-seller-contact">Seller Contact:</label>
-                <select class="po-input" id="po-seller-contact" required>
+                <label class="po-label" for="po-seller-contact2">Seller Contact:</label>
+                <select class="po-input" id="po-seller-contact2" required>
                     <option value="" disabled selected>Select a customer</option>
                     <option value="Customer 1">Customer 1</option>
                     <option value="Customer 2">Customer 2</option>
@@ -233,50 +233,50 @@
                 <!-- Disabled inputs -->
                 <div class="po-grid">
                     <div>
-                        <label class="po-label" for="customer-id">Customer ID:</label>
-                        <input class="po-input" type="text" id="customer-id" disabled>
+                        <label class="po-label" for="customer-id2">Customer ID:</label>
+                        <input class="po-input" type="text" id="customer-id2" disabled>
                     </div>
             
                     <div>
-                        <label class="po-label" for="vendor-code">Vendor Code:</label>
-                        <input class="po-input" type="text" id="vendor-code" disabled>
+                        <label class="po-label" for="vendor-code2">Vendor Code:</label>
+                        <input class="po-input" type="text" id="vendor-code2" disabled>
                     </div>
             
                     <div>
-                        <label class="po-label" for="customer-address">Customer Address:</label>
-                        <input class="po-input" type="text" id="customer-address" disabled>
+                        <label class="po-label" for="customer-address2">Customer Address:</label>
+                        <input class="po-input" type="text" id="customer-address2" disabled>
                     </div>
             
                     <div>
-                        <label class="po-label" for="vendor-gst">Vendor GST:</label>
-                        <input class="po-input" type="text" id="vendor-gst" disabled>
+                        <label class="po-label" for="vendor-gst2">Vendor GST:</label>
+                        <input class="po-input" type="text" id="vendor-gst2" disabled>
                     </div>
             
                     <div>
-                        <label class="po-label" for="state">State:</label>
-                        <input class="po-input" type="text" id="state" disabled>
+                        <label class="po-label" for="state2">State:</label>
+                        <input class="po-input" type="text" id="state2" disabled>
                     </div>
             
                     <div>
-                        <label class="po-label" for="date">Date:</label>
-                        <input class="po-input" type="date" id="date" disabled>
+                        <label class="po-label" for="date2">Date:</label>
+                        <input class="po-input" type="date" id="date2" disabled>
                     </div>
                 </div>
             
                 <!-- Editable inputs -->
                 <div class="po-editables">
                     <div>
-                        <label class="po-label" for="po-number">PO Number:</label>
-                        <input class="po-input" type="text" id="po-number" placeholder="Enter PO Number">
+                        <label class="po-label" for="po-number2">PO Number:</label>
+                        <input class="po-input" type="text" id="po-number2" placeholder="Enter PO Number">
                     </div>
             
                     <div>
-                        <label class="po-label" for="po-date">PO Date:</label>
-                        <input class="po-input" type="date" id="po-date">
+                        <label class="po-label" for="po-date2">PO Date:</label>
+                        <input class="po-input" type="date" id="po-date2">
                     </div>
                 </div>
             
-                <button class="po-btn" id="po-add-row">Add Row</button>
+                <button class="po-btn" id="po-add-row2">Add Row</button>
             
                 <table class="po-table">
                     <thead>
@@ -288,16 +288,105 @@
                         <th class="po-th">Action</th>
                     </tr>
                     </thead>
-                    <tbody id="po-order-items">
+                    <tbody id="po-order-items2">
                     <!-- Rows will be added here dynamically -->
                     </tbody>
                 </table>
             
-                <div class="po-total-amount">Total Amount: &#8377;<span id="po-total-amount">0</span></div>
+                <div class="po-total-amount">Total Amount: &#8377;<span id="po-total-amount2">0</span></div>
             
                 <div class="po-actions">
                     <button class="po-btn po-btn-danger po-cancel-btn" onclick="locations[1].redirect()">Cancel</button>
                     <button class="po-btn" onclick="locations[1].redirect()">Create Purchase Order</button>
+                </div>
+            </div>
+
+            <div class="po-menu-container settings-page">
+                <div>
+                    <h1 class="sett-h1">Settings</h1>
+                </div>
+                <div>
+                    <div>
+                        <label for="togg-1" class="sett-label">
+                            <span class="sett-span">Dark Mode</span>
+                            <input type="checkbox" id="togg-1" class="togg-label sett-input">
+                            <div class="toggle-container">
+                                <span class="toggle sett-span"></span>
+                                <span class="toggle-c sett-span"></span>
+                            </div>
+                        </label>
+                    </div>
+                    <div>
+                        <label for="togg-2" class="sett-label">
+                            <span class="sett-span">Desktop Notification</span>
+                            <input type="checkbox" id="togg-2" class="togg-label sett-input">
+                            <div class="toggle-container">
+                                <span class="toggle sett-span"></span>
+                                <span class="toggle-c sett-span"></span>
+                            </div>
+                        </label>
+                    </div>
+                    <div>
+                        <label for="togg-3" class="sett-label">
+                            <span class="sett-span">Focused Inbox</span>
+                            <input type="checkbox" id="togg-3" class="togg-label sett-input">
+                            <div class="toggle-container">
+                                <span class="toggle sett-span"></span>
+                                <span class="toggle-c sett-span"></span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3 class="sett-h3">Conservation View</h3>
+                    </div>
+
+                    <div>
+                        <label for="radio1" class="sett-flex sett-label">
+                            <input type="radio" name="Filter" id="radio1" class="sett-input">
+                            <span class="sett-span">Newest On Top</span>
+                        </label>
+                    </div>
+                    <div>
+                        <label for="radio1" class="sett-flex sett-label">
+                            <input type="radio" name="Filter" id="radio2" class="sett-input">
+                            <span class="sett-span">Newest On Bottom</span>
+                        </label>
+                    </div>
+                    <div>
+                        <label for="radio1" class="sett-flex sett-label">
+                            <input type="radio" name="Filter" id="radio3" class="sett-input">
+                            <span class="sett-span">Off</span>
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h3 class="sett-h3">Reading Pannel</h3>
+                    </div>
+
+                    <div>
+                        <label for="radio4" class="sett-flex sett-label">
+                            <input type="radio" name="Show-Mode" id="radio4" class="sett-input">
+                            <span class="sett-span">Show On The Right</span>
+                        </label>
+                    </div>
+                    <div>
+                        <label for="radio5" class="sett-flex sett-label">
+                            <input type="radio" name="Show-Mode" id="radio5" class="sett-input">
+                            <span class="sett-span">Show On The Left</span>
+                        </label>
+                    </div>
+                    <div>
+                        <label for="radio6" class="sett-flex sett-label">
+                            <input type="radio" name="Show-Mode" id="radio6" class="sett-input">
+                            <span class="sett-span">Off</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="sett-bottom">
+                    <span class="sett-span"></span>
                 </div>
             </div>
         </div>

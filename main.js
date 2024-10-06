@@ -1,5 +1,4 @@
 const { app, BrowserWindow, ipcMain, ipcRenderer, dialog, Menu, MenuItem, Tray, nativeImage } = require('electron');
-const { exec } = require('child_process');
 const path = require('path');
 let tray = null;
 let win = null;
@@ -143,3 +142,8 @@ app.on('activate', () => {
     createWindow()
   }
 })
+
+// Handle the version request from the renderer process
+ipcMain.handle('get-app-version', () => {
+  return app.getVersion();
+});
