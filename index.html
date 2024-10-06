@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSACS Software</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- ============== BOXICONS ============== -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" type="image/png" href="/favicon/favicon-48x48.png" sizes="48x48" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="RSACS" />
+    <link rel="manifest" href="/favicon/manifest" />
+
+</head>
+<body>
+
+    <!-- ============== NAV ============== -->
+    <div class="nav" id="nav">
+        <nav class="nav__content">
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-chevron-right'></i>
+            </div>
+
+            <a href="#" class="nav__logo">
+                <i class='bx bx-pulse' ></i>
+                <span class="nav__logo-name">RSACS</span>
+            </a>
+
+            <div class="nav__list">
+                <a href="#" class="nav__link active-link">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="nav__name">Dashboard</span>
+                </a>
+                
+                <a href="#" class="nav__link">
+                    <i class='bx bx-file'></i>
+                    <span class="nav__name">Appointments</span>
+                </a>
+                
+                <a href="#" class="nav__link">
+                    <i class='bx bx-envelope'></i>
+                    <span class="nav__name">Messages</span>
+                </a>
+
+                <a href="#" class="nav__link">
+                    <i class='bx bx-bar-chart-square'></i>
+                    <span class="nav__name">Statistic</span>
+                </a>
+
+                <a href="#" class="nav__link">
+                    <i class='bx bx-cog'></i>
+                    <span class="nav__name">Settings</span>
+                </a>
+
+                <!-- <a href="#" class="nav__link nav__account">
+                    <i class='bx bx-user-circle'></i>
+                    <span class="nav__name nav__account-name">Account</span>
+                    <i class='bx bx-chevron-right'></i>
+                </a> -->
+                
+            </div>
+
+            <!-- <div class="nav__account">
+                <img src="account-avatar-profile-user-11.svg" alt="nav img" class="nav__profile">
+
+                <div class="nav_acc__names">
+                    <h3 class="nav__name">Prajwal S Agnihothri</h3>
+                    <span class="nav__email">prajwanagni@gmail.com</span>
+                </div>
+
+                <i class="ri-arrow-right-s-line"></i>
+            </div> -->
+        </nav>
+    </div>
+
+    <!-- ============== HEADER ============== -->
+    <header class="header-container">
+        <div class="search-container">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="M21 21L16.7 16.7"></path>
+          </svg>
+          <input type="text" placeholder="Search" class="search-input" />
+        </div>
+        <span class="user-avatar">
+          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wgARCADIAMgDAREAAhEBAxEB/8QAGwABAAMBAQEBAAAAAAAAAAAAAAUGBwQBAgP/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAADZgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfJVyNJItB9AAAAAAAAAAzIgieIEnjTAAAAAAAAADmMONuOw4jEjcTpAAAAAAAABxmIm7H6H5GFG3HYAAAAAAAADwx87iylaOE2A9AAAAAAAAAOQoJHEiX46wAAAAAAAAAAAAAAAAAAAADwqRUzgPD6JQuJYwAAAAAAAfBlZGF2JQ9PkhCklvNDAAAAAAAKAVw1s/cAAjzHzSC0AAAAAAAyEuRbAAADPD8zRwAAAAAAZCcR0gAAHEWg0cAAAAAAECcwAAABIEuAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf/8QAQxAAAQMCAQULBwkJAAAAAAAAAQIDBAAFBhFBUVKTBxIWFyExQFVhgaEwMlRxkcHREBQ1NmNwc7LSICIjJFBTkqPi/9oACAEBAAE/APugUpKElSyEpAykk5AKuW6Da4ThbjhyWrSjkR7a4zkdVnb/APNW7dBtcxYRJDkRelfKj2ikLStAWhQUkjKCDlBHRcb4mcnzHLdFWREZORf2ihVpsM+9uFMJnfBPnLPIlNcW119Jhe1X6au1hn2RwJms70K81Y5UqrA+JXIM1FtlLyxXjkR9ms9EuD5i22U+nnaaWsdwJokqVlOUk1abc1arYxEZAAbSATrKzn5LtbmrtbH4jwBDieQ6qsxrlSdBFW58yrbFfVzusoWe8A9DuyC7ZpqE+cphwDvSaByEHRUd9EqM2+0cqHEhaT2H5JD6IsZx905G20laj2Cid8SdNWhBas0JCuRSWGwe5I6Jimxrsd3cQEkRnSVsns0d1Yaxq/ZGRFktl+Lm1kVxkWn+xN/wT+qsSY1fvTJixmzHi59ZdYWsa73d20FP8s0Qt5XZo7+i3K2RbtDVGmNhbZ9qTpBq47nE5lZMB9t9vQs7xdcBb96GNsj41bdzia8sG4vtsNaEHfLq22yLaYaY0NsIbHtJ0k/0xSghJUogJAykmrxugwYRLUBHzt3X5m6l45vcrmkhhOq0gUcR3jrOXtTXCG79ZzNsqkYlvKDlFzld7hNQcf3iKf46mpSNC0AH2irJjW3XhYZWTFknmQ5zK9R6C66hhlbrqghtAKlKOYCsU4tfvbymIxLUEZs7naas9hnXx4ohNZUjz3FciE1A3NobQBnyXXl6G/3E0MDWD0E7ZfxrgPYPQP8Ac58aXgWwr5oZR6nl+81c9zVG8K7XKP4b/wARU+3yrZJMeayppwZjnGkHOKwfjNbS0W+6OFTZ5GntTsPQN0S+HKm0sHQt/wBwrDNgcv8AcQ1yojt8ry6hw2IEVEeK0ltpAyBI/avNmi3uCqPKT2oXnQdIq525+03B2JJGRbZ7lDMRWBb6brajGfVlkxcg7VIzHy+NfrbO9aPyCtzlAGHXFZy+ryG6ahImQF5yhYrcz+lZn4Pv8vjX62zvWj8gqDfrlbWCzClraaJ329FcLr51i74VwuvnWLvhXC6+dYu+FcLr51i74VwuvnWLvhXC6+dYu+FcLr51i74VcLtNupQZ0hTxbyhO+rcz+lZn4Pv8vcMHWu5znZclDpdc84hdcX1k1H9rXF9ZNR/a1xfWTUf2tcX1k1H9rXF9ZNR/a1xfWTUf2tcX1k1H9rXF9ZNR/a1xfWTUf2tWfDUCxvOOwg4FOJ3p3y8v3Pf/xAAUEQEAAAAAAAAAAAAAAAAAAACQ/9oACAECAQE/ABx//8QAFBEBAAAAAAAAAAAAAAAAAAAAkP/aAAgBAwEBPwAcf//Z" alt="User" class="user-image">
+        </span>
+    </header>
+
+    <!-- ============== MAIN ============== -->
+    <main class="container section">
+        <h1>Purchase Order</h1>
+
+        <div class="po-body">
+
+            <div class="po-menu-container">
+                <div class="po-menu-card">
+                    <div class="po-menu-card-title">Create PO</div>
+                    <div class="po-menu-card-description">Generate a new purchase order</div>
+                </div>
+                <div class="po-menu-card">
+                    <div class="po-menu-card-title">View PO</div>
+                    <div class="po-menu-card-description">Display existing purchase orders</div>
+                </div>
+                <div class="po-menu-card">
+                    <div class="po-menu-card-title">Edit PO</div>
+                    <div class="po-menu-card-description">Modify a previously created purchase order</div>
+                </div>
+                <div class="po-menu-card">
+                    <div class="po-menu-card-title">Edit PO (No Invoice)</div>
+                    <div class="po-menu-card-description">Update POs before invoice creation</div>
+                </div>
+                <!-- <div class="po-menu-card">
+                    <div class="po-menu-card-title">Remove Background</div>
+                    <div class="po-menu-card-description">Easily remove the background from an image</div>
+                </div>
+                <div class="po-menu-card">
+                    <div class="po-menu-card-title">Merge PDF</div>
+                    <div class="po-menu-card-description">Merge 2 or more PDF files into one</div>
+                </div>
+                <div class="po-menu-card">
+                    <div class="po-menu-card-title">Edit PDF</div>
+                    <div class="po-menu-card-description">Free PDF editor</div>
+                </div>
+                <div class="po-menu-card">
+                    <div class="po-menu-card-title">PDF to JPG</div>
+                    <div class="po-menu-card-description">Convert PDF to JPG</div>
+                </div> -->
+            </div>
+
+            <div class="po-container">
+                <h2 class="po-h2">Purchase Order Form</h2>
+                
+                <!-- Dropdown for Seller Contact -->
+                <label class="po-label" for="po-seller-contact">Seller Contact:</label>
+                <select class="po-input" id="po-seller-contact" required>
+                    <option value="" disabled selected>Select a customer</option>
+                    <option value="Customer 1">Customer 1</option>
+                    <option value="Customer 2">Customer 2</option>
+                    <option value="Customer 3">Customer 3</option>
+                    <option value="Customer 4">Customer 4</option>
+                    <option value="Customer 5">Customer 5</option>
+                </select>
+            
+                <!-- Disabled inputs -->
+                <div class="po-grid">
+                    <div>
+                        <label class="po-label" for="customer-id">Customer ID:</label>
+                        <input class="po-input" type="text" id="customer-id" disabled>
+                    </div>
+            
+                    <div>
+                        <label class="po-label" for="vendor-code">Vendor Code:</label>
+                        <input class="po-input" type="text" id="vendor-code" disabled>
+                    </div>
+            
+                    <div>
+                        <label class="po-label" for="customer-address">Customer Address:</label>
+                        <input class="po-input" type="text" id="customer-address" disabled>
+                    </div>
+            
+                    <div>
+                        <label class="po-label" for="vendor-gst">Vendor GST:</label>
+                        <input class="po-input" type="text" id="vendor-gst" disabled>
+                    </div>
+            
+                    <div>
+                        <label class="po-label" for="state">State:</label>
+                        <input class="po-input" type="text" id="state" disabled>
+                    </div>
+            
+                    <div>
+                        <label class="po-label" for="date">Date:</label>
+                        <input class="po-input" type="date" id="date" disabled>
+                    </div>
+                </div>
+            
+                <!-- Editable inputs -->
+                <div class="po-editables">
+                    <div>
+                        <label class="po-label" for="po-number">PO Number:</label>
+                        <input class="po-input" type="text" id="po-number" placeholder="Enter PO Number">
+                    </div>
+            
+                    <div>
+                        <label class="po-label" for="po-date">PO Date:</label>
+                        <input class="po-input" type="date" id="po-date">
+                    </div>
+                </div>
+            
+                <button class="po-btn" id="po-add-row">Add Row</button>
+            
+                <table class="po-table">
+                    <thead>
+                    <tr>
+                        <th class="po-th">Product Name</th>
+                        <th class="po-th">Quantity</th>
+                        <th class="po-th">Unit Price</th>
+                        <th class="po-th">Total Amount</th>
+                        <th class="po-th">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody id="po-order-items">
+                    <!-- Rows will be added here dynamically -->
+                    </tbody>
+                </table>
+            
+                <div class="po-total-amount">Total Amount: &#8377;<span id="po-total-amount">0</span></div>
+            
+                <div class="po-actions">
+                    <button class="po-btn po-btn-danger po-cancel-btn" onclick="locations[1].redirect()">Cancel</button>
+                    <button class="po-btn" onclick="locations[1].redirect()">Create Purchase Order</button>
+                </div>
+            </div>
+
+            <div class="po-container">
+                <h2 class="po-h2">Purchase Order Form</h2>
+                
+                <!-- Dropdown for Seller Contact -->
+                <label class="po-label" for="po-seller-contact">Seller Contact:</label>
+                <select class="po-input" id="po-seller-contact" required>
+                    <option value="" disabled selected>Select a customer</option>
+                    <option value="Customer 1">Customer 1</option>
+                    <option value="Customer 2">Customer 2</option>
+                    <option value="Customer 3">Customer 3</option>
+                    <option value="Customer 4">Customer 4</option>
+                    <option value="Customer 5">Customer 5</option>
+                </select>
+            
+                <!-- Disabled inputs -->
+                <div class="po-grid">
+                    <div>
+                        <label class="po-label" for="customer-id">Customer ID:</label>
+                        <input class="po-input" type="text" id="customer-id" disabled>
+                    </div>
+            
+                    <div>
+                        <label class="po-label" for="vendor-code">Vendor Code:</label>
+                        <input class="po-input" type="text" id="vendor-code" disabled>
+                    </div>
+            
+                    <div>
+                        <label class="po-label" for="customer-address">Customer Address:</label>
+                        <input class="po-input" type="text" id="customer-address" disabled>
+                    </div>
+            
+                    <div>
+                        <label class="po-label" for="vendor-gst">Vendor GST:</label>
+                        <input class="po-input" type="text" id="vendor-gst" disabled>
+                    </div>
+            
+                    <div>
+                        <label class="po-label" for="state">State:</label>
+                        <input class="po-input" type="text" id="state" disabled>
+                    </div>
+            
+                    <div>
+                        <label class="po-label" for="date">Date:</label>
+                        <input class="po-input" type="date" id="date" disabled>
+                    </div>
+                </div>
+            
+                <!-- Editable inputs -->
+                <div class="po-editables">
+                    <div>
+                        <label class="po-label" for="po-number">PO Number:</label>
+                        <input class="po-input" type="text" id="po-number" placeholder="Enter PO Number">
+                    </div>
+            
+                    <div>
+                        <label class="po-label" for="po-date">PO Date:</label>
+                        <input class="po-input" type="date" id="po-date">
+                    </div>
+                </div>
+            
+                <button class="po-btn" id="po-add-row">Add Row</button>
+            
+                <table class="po-table">
+                    <thead>
+                    <tr>
+                        <th class="po-th">Product Name</th>
+                        <th class="po-th">Quantity</th>
+                        <th class="po-th">Unit Price</th>
+                        <th class="po-th">Total Amount</th>
+                        <th class="po-th">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody id="po-order-items">
+                    <!-- Rows will be added here dynamically -->
+                    </tbody>
+                </table>
+            
+                <div class="po-total-amount">Total Amount: &#8377;<span id="po-total-amount">0</span></div>
+            
+                <div class="po-actions">
+                    <button class="po-btn po-btn-danger po-cancel-btn" onclick="locations[1].redirect()">Cancel</button>
+                    <button class="po-btn" onclick="locations[1].redirect()">Create Purchase Order</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- ============== MAIN JS ============== -->
+    <script src="script.js"></script>
+    <!-- <script type="module" src="renderer.js"></script> -->
+</body>
+</html>
