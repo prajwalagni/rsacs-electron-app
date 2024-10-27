@@ -99,6 +99,7 @@ let locations = [
             po_mainPage.style.display = "flex";
             settings_mainPage.style.display = "none";
             document.querySelector("main > h1").style.display = "block";
+            window.electronAPI.sendNotification("Test Title", "Testing body");
         }
     }
 ]
