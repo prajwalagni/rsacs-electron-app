@@ -1,12 +1,10 @@
 {
   "name": "rsacs-electron-app",
-  "version": "1.1.4",
-  "description": "",
+  "version": "1.1.4.0",
+  "description": "RSACS Software Application",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dist": "electron-builder"
     "test": "echo \"Error: no test specified\" && exit 1",
     "dist": "electron-builder"
   },
@@ -26,9 +24,12 @@
   "build": {
     "appId": "com.rsacs.software",
     "productName": "RSACS Software",
+    "linux": {
+      "target": ["AppImage"],
+      "icon": "favicon/favicon.ico"
+    },
     "win": {
       "target": [
-        "nsis",
         "zip"
       ],
       "icon": "favicon/favicon.ico"
