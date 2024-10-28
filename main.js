@@ -80,10 +80,10 @@ function createWindow() {
   tray.setToolTip('My Electron Test App');
 
   // Handle closing to tray
-  // win.on('close', (event) => {
-  //   event.preventDefault();
-  //   win.hide();
-  // });
+  win.on('close', (event) => {
+    event.preventDefault();
+    win.hide();
+  });
 
   const contextMenu = Menu.buildFromTemplate([
     {
@@ -110,6 +110,7 @@ function createWindow() {
     {
       label: 'Quit',
       click: () => {
+        connection.end();
         win.destroy();
       },
     },
@@ -119,7 +120,7 @@ function createWindow() {
   tray.setContextMenu(contextMenu);
 
   // Set the tray icon's tooltip (optional)
-  tray.setToolTip('My Electron App');
+  tray.setToolTip('RSACS Software');
 
   // Optionally, you can handle left-click events as well (e.g., to show the main window)
   tray.on('click', () => {
@@ -154,9 +155,9 @@ ipcMain.handle('get-app-version', () => {
 
 // Create the connection to the database
 const connection = mysql.createConnection({
-  host: 'localhost', // Replace with the IP address of the MySQL server
-  user: 'root',
-  password: 'admin153523',
+  host: '192.168.0.221', // Replace with the IP address of the MySQL server
+  user: 'prajwal',
+  password: 'Prajwal!16',
   database: 'rsacs_db'
 });
 
@@ -218,7 +219,7 @@ ipcMain.handle('cal-rm-entry', (event, sl_no) => {
 });
 
 const botToken = '1164104361:AAFD5t5u_iJISiKz58hJHav7rv8uhbyj0xk';  // Replace with your bot token
-const chatId = '469130264'; //'-1001172413614' // Replace with the chat ID where you want to send the message
+const chatId = '-1001172413614'; //'469130264' // Replace with the chat ID where you want to send the message
 
 // Create a new instance of the bot
 const bot = new TGBot(botToken, { polling: false });
@@ -239,7 +240,7 @@ ipcMain.handle('send-telegram-message', (event, message) => {
 
 
 // Daily check at 3 AM
-cron.schedule('24 17 * * *', async () => {
+cron.schedule('0 3 * * *', async () => {
   // console.log("cron running");
   connection.query('SELECT * FROM cal_details ORDER BY sl_no', async function (err, results, fields) {
     if (err) throw err;
@@ -277,7 +278,7 @@ cron.schedule('24 17 * * *', async () => {
 });
 
 // Monthly check on the 1st of every month at 3 AM
-cron.schedule('19 18 27 * *', async () => {
+cron.schedule('0 3 28 * *', async () => {
   // console.log("cron running");
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   connection.query('SELECT * FROM cal_details ORDER BY cal_due_date', async function (err, results, fields) {
@@ -340,7 +341,6 @@ cron.schedule('19 18 27 * *', async () => {
 
 // Quit when all windows are closed
 app.on('window-all-closed', () => {
-  connection.end();
   if (process.platform !== 'darwin') {
     app.quit()
   }
