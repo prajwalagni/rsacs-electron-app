@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain, ipcRenderer, dialog, Menu, MenuItem, Tray, nativeImage } = require('electron');
 const { autoUpdater } = require('electron-updater');
+require('dotenv').config();
 const path = require('path');
 let tray = null;
 let win = null;
@@ -218,8 +219,8 @@ ipcMain.handle('cal-rm-entry', (event, sl_no) => {
   
 });
 
-const botToken = '1164104361:AAFD5t5u_iJISiKz58hJHav7rv8uhbyj0xk';  // Replace with your bot token
-const chatId = '-1001172413614'; //'469130264' // Replace with the chat ID where you want to send the message
+const botToken = process.env.TELEGRAM_BOT_TOKEN;  // Replace with your bot token
+const chatId = process.env.TELEGRAM_CHAT_ID; //'469130264' // Replace with the chat ID where you want to send the message
 
 // Create a new instance of the bot
 const bot = new TGBot(botToken, { polling: false });
