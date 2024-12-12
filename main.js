@@ -110,9 +110,20 @@ function createWindow() {
     },
     {
       label: 'Quit',
-      click: () => {
-        connection.end();
-        win.destroy();
+      click: () => {        
+        connection.ping((err) => {
+          console.log("TEST")
+          if (err) {
+            console.log('Connection is closed or ended:', err.message);
+            // win.destroy();
+          } else {
+            console.log('Connection is alive.');
+            connection.end();
+          }
+        });
+        setTimeout(() => {
+          win.destroy();
+        }, 1000);
       },
     },
   ]);
@@ -242,7 +253,7 @@ ipcMain.handle('send-telegram-message', (event, message) => {
 
 // Daily check at 3 AM
 cron.schedule('0 3 * * *', async () => {
-  // console.log("cron running");
+  console.log("cron running");
   connection.query('SELECT * FROM cal_details ORDER BY sl_no', async function (err, results, fields) {
     if (err) throw err;
     // console.log("res DONE");

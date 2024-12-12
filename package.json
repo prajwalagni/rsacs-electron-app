@@ -1,21 +1,24 @@
 {
   "name": "rsacs-electron-app",
-  "version": "1.1.5",
+  "version": "v1.1.6",
   "description": "RSACS Software Application",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dist": "electron-builder"
+    "dist": "cp .env dist/ && electron-builder"
   },
   "keywords": [],
-  "author": "",
+  "author": "Prajwal S A <prajwalagni@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^32.1.2",
+    "@types/node-cron": "^3.0.11",
+    "@types/node-telegram-bot-api": "^0.64.7",
+    "electron": "^33.2.1",
     "electron-builder": "^25.1.8"
   },
   "dependencies": {
+    "dotenv": "^16.4.7",
     "electron-updater": "^6.3.9",
     "mysql2": "^3.11.3",
     "node-cron": "^3.0.3",
@@ -25,12 +28,16 @@
     "appId": "com.rsacs.software",
     "productName": "RSACS Software",
     "linux": {
-      "target": ["AppImage"],
+      "target": [
+        "AppImage",
+        "deb"
+      ],
       "icon": "favicon/favicon.png"
     },
     "win": {
       "target": [
-        "zip"
+        { "target": "nsis", "arch": "ia32" },
+        { "target": "nsis", "arch": "x64" }
       ],
       "icon": "favicon/favicon.ico"
     },
