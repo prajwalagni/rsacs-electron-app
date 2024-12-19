@@ -231,19 +231,45 @@ ipcMain.handle('cal-rm-entry', (event, sl_no) => {
 });
 
 const botToken = process.env.TELEGRAM_BOT_TOKEN;  // Replace with your bot token
-const chatId = process.env.TELEGRAM_CHAT_ID; //'469130264' // Replace with the chat ID where you want to send the message
+const chatId = process.env.TELEGRAM_CHAT_ID; // Replace with the chat ID where you want to send the message
+
+console.log(botToken);
+console.log(chatId);
 
 // Create a new instance of the bot
 const bot = new TGBot(botToken, { polling: false });
 
-async function sendTGmsg(message) {
-  bot.sendMessage(chatId, message, { parse_mode: 'HTML' })
-    .then(() => {
+// Function to send message to Telegram (depricated - Aggregate Error due to multiple messages sent parallely.)
+// async function sendTGmsg(message) {
+//   bot.sendMessage(chatId, message, { parse_mode: 'HTML' })
+//     .then(() => {
+//       console.log('Message sent successfully');
+//     })
+//     .catch((error) => {
+//       console.error('Error sending message:', error);
+//     });
+// }
+
+// Function to send message to Telegram with retry logic
+async function sendTGmsg(message, retries = 3, delay = 2000) {
+  let attempt = 0;
+
+  while (attempt < retries) {
+    try {
+      await bot.sendMessage(chatId, message, { parse_mode: 'HTML' });
       console.log('Message sent successfully');
-    })
-    .catch((error) => {
-      console.error('Error sending message:', error);
-    });
+      return; // Exit on success
+    }
+    catch (error) {
+      attempt++;
+      console.error(`Attempt attempt failed:${error.message}`);
+      if (attempt < retries) {
+        console.log(`Retrying in ${delay / 1000} seconds...`);
+        await new Promise(resolve => setTimeout(resolve, delay)); // Wait before retrying
+      }
+    }
+  }
+  console.error('All attempts to send message failed.');
 }
 
 ipcMain.handle('send-telegram-message', (event, message) => {
@@ -261,6 +287,7 @@ cron.schedule('0 3 * * *', async () => {
       // console.log("loop", n);
       let date1 = new Date();
       let date2 = results[n].cal_due_date;
+      // console.log(date1, date2);
 
       const oneDay = 24 * 60 * 60 * 1000; // milliseconds in one day
       const diffDays = Math.ceil((date2 - date1) / oneDay);
@@ -282,7 +309,7 @@ cron.schedule('0 3 * * *', async () => {
           // let res = await win.webContents.send('send_tg_msg', message);
           // console.log(win.webContents.send('send_tg_msg', message));
           // ipcRenderer.invoke('send-telegram-message', msg);
-          sendTGmsg(message);
+          await sendTGmsg(message);
       }
       
     }
