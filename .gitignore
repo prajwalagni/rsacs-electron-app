@@ -2,4 +2,5 @@ node_modules/
 .vscode/
 https/
 dist/
+dist-old/
 .env

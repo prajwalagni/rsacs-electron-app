@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dist": "cp .env dist/ && electron-builder"
+    "dist": "cp .env dist/ && electron-builder -wl --publish=always"
   },
   "keywords": [],
   "author": "Prajwal S A <prajwalagni@gmail.com>",
@@ -22,7 +22,7 @@
     "electron-updater": "^6.3.9",
     "mysql2": "^3.11.3",
     "node-cron": "^3.0.3",
-    "node-telegram-bot-api": "^0.66.0"
+    "node-telegram-bot-api": "^0.63.0"
   },
   "build": {
     "appId": "com.rsacs.software",
@@ -36,8 +36,14 @@
     },
     "win": {
       "target": [
-        { "target": "nsis", "arch": "ia32" },
-        { "target": "nsis", "arch": "x64" }
+        {
+          "target": "nsis",
+          "arch": "ia32"
+        },
+        {
+          "target": "nsis",
+          "arch": "x64"
+        }
       ],
       "icon": "favicon/favicon.ico"
     },
@@ -46,9 +52,9 @@
       "allowToChangeInstallationDirectory": true
     },
     "files": [
-      "favicon/",
-      "newDesign/",
-      "node_modules/",
+      "favicon/**/*",
+      "newDesign/**/*",
+      "node_modules/**/*",
       "package.json",
       "package-lock.json",
       "preload.js",
